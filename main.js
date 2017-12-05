@@ -1,14 +1,16 @@
 $(document).ready(function (){
-  console.log('ready')
+    let hcoords = []
+
     if ('geolocation' in navigator) {
-    // navigator.geolocation.getCurrentPosition(function (position){
-    //   console.log(position);
-    // })
     const watch = navigator.geolocation.watchPosition(function (position) {
-      console.log(position);
+
       $('#latitude').html(position.coords.latitude)
       $('#longitude').html(position.coords.longitude)
+
+      hcoords.push(position.coords.latitude)
+      $('#hlatitude').html(hcoords)
     })
+
   } else {
     console.log('nao foi possivel acessar a api de localizacao')
   }
